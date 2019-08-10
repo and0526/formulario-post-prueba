@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejemplo</title>
+    <script   src="https://code.jquery.com/jquery-3.4.1.min.js"   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="   crossorigin="anonymous"></script>
+    <script>
+        function onSubmit(){
+            var formData = {
+                name: $('#name').val(),
+                age: $('#age').val()
+            };
+            console.log("juaz");
+            console.log(formData);
+            console.log(JSON.stringify(formData));
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:3000/teacher/register",
+                data: JSON.stringify(formData),
+                success: function(e){ console.log(e)},
+                dataType: "json",
+                contentType : "application/json" 
+            });
+        }
+    </script>
+</head>
+<body>
+
+    <div class="formulario" id="myForm">
+            <label for="name">Ingresa tu Nombre</label>
+            <input type="text" name="name" id="name"><br>
+
+            <label for="age">Ingresa tu Edad</label>
+            <input type="number" name="age" id="age"><br>
+            
+            <button onclick="onSubmit()">abc</button>
+    </div>
+    
+</body>
+</html>
